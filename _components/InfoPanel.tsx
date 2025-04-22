@@ -19,6 +19,7 @@ const contentMap = {
       "PHP",
       "MySQL",
       "Vue",
+      "Java",
     ],
   },
   Design: {
@@ -43,9 +44,10 @@ export default function InfoPanel({ active }: InfoPanelProps) {
     "PHP",
     "MySQL",
     "Vue",
+    "Java",
   ];
 
-  const bgColors = ["bg-white", "bg-gray-400", "bg-gray-600"];
+  const bgColors = ["bg-white", "bg-gray-300", "bg-gray-400"];
   const [colorMap, setColorMap] = useState<string[]>([]);
   const [fadeClass, setFadeClass] = useState("fade-in-left");
   const [currentContent, setCurrentContent] = useState(contentMap[active]);
