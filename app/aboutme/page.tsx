@@ -8,8 +8,8 @@ import Navbar from "../../_components/Navbar";
 const AboutMe: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const modelRef = useRef<THREE.Object3D | null>(null);
-  let lastMouseX = 0;
-  let rotationSpeed = useRef(0.05); // Start with some speed
+  const lastMouseX = useRef(0); // Changed to useRef
+  const rotationSpeed = useRef(0.05); // Already using useRef, no change needed
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -21,10 +21,10 @@ const AboutMe: React.FC = () => {
     // Create the scene, camera, and renderer
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, aspectRatio, 0.1, 1000);
-    camera.position.set(0, 0, 15); // Increase the Z value to zoom out further (from 5 to 8, for example)
+    camera.position.set(0, 0, 15);
 
     const renderer = new THREE.WebGLRenderer({ alpha: true });
-    renderer.setPixelRatio(window.devicePixelRatio); // Set high pixel ratio for better rendering
+    renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(width, height);
     containerRef.current.appendChild(renderer.domElement);
 
@@ -34,7 +34,7 @@ const AboutMe: React.FC = () => {
       const model = gltf.scene;
       model.scale.set(3, 3, 3);
       model.position.set(0, 0, 0);
-      model.rotation.y = Math.PI / -2; // Initial rotation to adjust the model orientation
+      model.rotation.y = Math.PI / -2;
       scene.add(model);
       modelRef.current = model;
 
@@ -51,16 +51,13 @@ const AboutMe: React.FC = () => {
       requestAnimationFrame(animate);
 
       if (modelRef.current) {
-        // Apply the rotation to the model
         modelRef.current.rotation.y += rotationSpeed.current;
 
-        // Ease the rotation speed to slow it down gradually
         if (rotationSpeed.current > 0.001) {
-          rotationSpeed.current *= 0.99; // Easing effect (slowing down)
+          rotationSpeed.current *= 0.99;
         }
       }
 
-      // Render the scene
       renderer.render(scene, camera);
     };
     animate();
@@ -70,21 +67,24 @@ const AboutMe: React.FC = () => {
       if (!containerRef.current) return;
 
       const mouseX = event.clientX;
-      const deltaX = mouseX - lastMouseX;
-      rotationSpeed.current = deltaX * 0.005; // Adjust speed based on mouse movement
-      lastMouseX = mouseX;
+      const deltaX = mouseX - lastMouseX.current;
+      rotationSpeed.current = deltaX * 0.005;
+      lastMouseX.current = mouseX; // Update ref value
     };
 
-    // Event listeners for mousemove
     containerRef.current.addEventListener("mousemove", onMouseMove);
 
     // Cleanup on component unmount
     return () => {
-      containerRef.current?.removeChild(renderer.domElement);
-      containerRef.current?.removeEventListener("mousemove", onMouseMove);
+      if (containerRef.current) {
+        containerRef.current.removeEventListener("mousemove", onMouseMove);
+        if (renderer.domElement.parentNode === containerRef.current) {
+          containerRef.current.removeChild(renderer.domElement);
+        }
+      }
       renderer.dispose();
     };
-  }, []);
+  }, []); // Empty dependency array is correct here
 
   return (
     <>
