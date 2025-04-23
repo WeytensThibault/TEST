@@ -11,6 +11,10 @@ const TorusModel: React.FC = () => {
   useEffect(() => {
     if (!containerRef.current) return;
 
+    // Clear container contents to prevent stacking
+    while (containerRef.current.firstChild) {
+      containerRef.current.removeChild(containerRef.current.firstChild);
+    }
     const scene = new THREE.Scene();
     const width = containerRef.current.clientWidth;
     const height = containerRef.current.clientHeight;

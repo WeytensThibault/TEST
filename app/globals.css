@@ -8,7 +8,7 @@
   --white: #ffffff;
   --foreground: #171717;
   --background: #ffffff;
-  --gray: #9a2121;
+  --gray: #404040;
 
   --font-sans: "Geist Sans", sans-serif;
   --font-mono: "Geist Mono", monospace;
@@ -30,7 +30,9 @@
     --color-background: var(--background);
   }
 }
-
+@theme {
+  --color-gray: var(--gray);
+}
 body {
   background-color: #171717;
   color: var(--color-foreground);
@@ -59,10 +61,26 @@ body {
   }
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-20%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 .fade-out-right {
   animation: fadeOutRight 1s forwards;
 }
 
 .fade-in-left {
   animation: fadeInLeft 1s forwards;
+}
+
+@layer utilities {
+  .animate-fadeIn {
+    animation: fadeIn 0.5s ease-in-out forwards;
+  }
 }

@@ -1,6 +1,22 @@
-"use client";
-
-import { useEffect, useState } from "react";
+import { JSX, useEffect, useState } from "react";
+import {
+  SiReact,
+  SiAngular,
+  SiJavascript,
+  SiSharp,
+  SiSpringboot,
+  SiPhp,
+  SiMysql,
+  SiVuedotjs,
+  SiFigma,
+  SiAdobexd,
+  SiAdobeillustrator,
+  SiAdobephotoshop,
+  SiAdobeaftereffects,
+  SiAdobepremierepro,
+  SiBlender,
+  SiSony,
+} from "react-icons/si";
 
 interface InfoPanelProps {
   active: "Coding" | "Design" | "Video";
@@ -34,37 +50,38 @@ const contentMap = {
   },
 };
 
-export default function InfoPanel({ active }: InfoPanelProps) {
-  const codingKnowledge = [
-    "Angular",
-    "React",
-    "C#",
-    "JavaScript",
-    "SpringBoot",
-    "PHP",
-    "MySQL",
-    "Vue",
-    "Java",
-  ];
+// Icon mapping
+const toolIcons: Record<string, JSX.Element> = {
+  React: <SiReact />,
+  Angular: <SiAngular />,
+  JavaScript: <SiJavascript />,
+  "C#": <SiSharp />,
+  SpringBoot: <SiSpringboot />,
+  PHP: <SiPhp />,
+  MySQL: <SiMysql />,
+  Vue: <SiVuedotjs />,
 
-  const bgColors = ["bg-white", "bg-gray-300", "bg-gray-400"];
-  const [colorMap, setColorMap] = useState<string[]>([]);
+  Figma: <SiFigma />,
+  "Adobe XD": <SiAdobexd />,
+  Illustrator: <SiAdobeillustrator />,
+  Photoshop: <SiAdobephotoshop />,
+  "After Effects": <SiAdobeaftereffects />,
+  "Premiere Pro": <SiAdobepremierepro />,
+  Blender: <SiBlender />,
+  "Sony Vegas": <SiSony />,
+};
+
+export default function InfoPanel({ active }: InfoPanelProps) {
+  const [colorMap] = useState<string[]>([]);
   const [fadeClass, setFadeClass] = useState("fade-in-left");
   const [currentContent, setCurrentContent] = useState(contentMap[active]);
 
-  useEffect(() => {
-    const randomized = codingKnowledge.map(() => {
-      return bgColors[Math.floor(Math.random() * bgColors.length)];
-    });
-    setColorMap(randomized);
-  }, []);
+  useEffect(() => {}, [active]);
 
   useEffect(() => {
     setFadeClass("fade-out-right");
-
     const timer = setTimeout(() => {
       setCurrentContent(contentMap[active]);
-
       setFadeClass("fade-in-left");
     }, 300);
 
@@ -81,10 +98,9 @@ export default function InfoPanel({ active }: InfoPanelProps) {
 
   return (
     <div className="px-20">
-      <p className="text-white text-2xl font-bold pb-4">Info:</p>
+      <p className="text-white text-2xl font-bold pb-4">My skills:</p>
       <div className="flex w-full min-h-screen">
         <div className="relative w-[4px] pl-10">
-          <div className="absolute left-1/2 w-4 h-4 bg-white rounded-full shadow-[0_0_12px_4px_rgba(255,255,255,0.8)] top-4 transform -translate-x-1/2" />
           <div className="absolute left-1/2 top-0 h-3/6 w-[2px] bg-white rounded-full shadow-[0_0_8px_2px_rgba(255,255,255,0.6)]" />
         </div>
 
@@ -96,17 +112,17 @@ export default function InfoPanel({ active }: InfoPanelProps) {
             - {currentContent.description}
           </p>
 
-          <p className={` pt-4 text-l font-bold text-white ${fadeClass}`}>
-            Tools:
-          </p>
           <div className="flex flex-wrap pt-2">
             {currentContent.tools.map((item, index) => (
               <p
                 key={index}
-                className={`p-2 m-1 ${
+                className={`flex items-center gap-2 p-2 m-1 ${
                   colorMap[index % colorMap.length] || "bg-white"
                 } ${fadeClass} text-black rounded transition duration-200`}
               >
+                {toolIcons[item] && (
+                  <span className="text-[20px]">{toolIcons[item]}</span>
+                )}
                 {item}
               </p>
             ))}

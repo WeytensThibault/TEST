@@ -9,17 +9,21 @@ export default function Hero() {
       <div className="absolute inset-0 z-0 top-10 pointer-events-none">
         <TorusModel />
       </div>
-      <div className="relative h-screen flex justify-center items-center flex-col">
-        <h1 className="text-6xl text-white font-bold  text-center">
+
+      {/* 👇 Hero content */}
+      <div className="relative h-screen flex flex-col justify-center items-center text-center px-6 z-10">
+        <h1 className="text-white text-7xl md:text-8xl font-extrabold drop-shadow-lg">
           Thibault Weytens
         </h1>
-        <h2 className="text-white text-2xl pt-4">Retarded Student</h2>
+        <h2 className="text-white text-3xl md:text-4xl mt-4 font-medium tracking-wide">
+          Creative Developer & Student
+        </h2>
 
-        <p>🎂 {age}</p>
-
-        <p>📍Belgium</p>
-
-        <p>🎓 Howest, VTI Deinze</p>
+        <div className="mt-8 text-white text-xl md:text-2xl space-y-2 font-light">
+          <p>🎂 {age} years old</p>
+          <p>📍 Based in Belgium</p>
+          <p>🎓 Studying at Howest, VTI Deinze</p>
+        </div>
       </div>
     </>
   );

@@ -4,17 +4,21 @@ import ThreeScene from "./threejs/ThreeScene";
 
 export default function Navbar() {
   return (
-    <nav className="flex items-center shadow-lg border-b-2 border-cyan-100 shadow-cyan-100/50 justify-between px-6  bg-primal text-white">
+    <nav className="flex items-center shadow-lg border-1 sticky top-0 border-cyan-100  justify-between px-6  bg-primal text-white m-4">
       <div className="w-16 ">
         <ThreeScene />
       </div>
 
       <ul className="flex space-x-4 pr-10">
         <li>
-          <Link href="/">Home</Link>
+          <Link className="p-2 border-1" href="/">
+            Home
+          </Link>
         </li>
         <li>
-          <Link href="/aboutme">About me</Link>
+          <Link className="p-2 border-1" href="/aboutme">
+            About me
+          </Link>
         </li>
       </ul>
     </nav>

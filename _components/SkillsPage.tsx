@@ -19,8 +19,6 @@ export default function Skillspage() {
 
   return (
     <div className="h-screen border-black">
-      <h1 className="text-4xl text-white font-bold text-center">My skills:</h1>
-      {/* Skills list at the top for md and smaller screens */}
       <div className="w-full flex flex-col items-center justify-center lg:hidden mt-10">
         <p className="text-white text-2xl font-bold pb-4 text-center">
           My field in:
