@@ -1,81 +1,81 @@
 "use client";
 
-import { useState } from "react";
-import InfoPanel from "./InfoPanel";
-import Pedestals from "./threejs/Pedestals";
+import { JSX } from "react";
+import {
+  SiReact,
+  SiAngular,
+  SiJavascript,
+  SiSharp,
+  SiSpringboot,
+  SiPhp,
+  SiMysql,
+  SiVuedotjs,
+  SiFigma,
+  SiAdobexd,
+  SiAdobeillustrator,
+  SiAdobephotoshop,
+  SiAdobeaftereffects,
+  SiAdobepremierepro,
+  SiBlender,
+  SiSony,
+} from "react-icons/si";
 
 export default function Skillspage() {
-  const [active, setActiveItem] = useState<"Coding" | "Design" | "Video">(
-    "Coding"
-  );
+  const Skills = {
+    tools: [
+      "Angular",
+      "React",
+      "C#",
+      "JavaScript",
+      "SpringBoot",
+      "PHP",
+      "MySQL",
+      "Vue",
+      "Java",
+      "Figma",
+      "Adobe XD",
+      "Illustrator",
+      "Photoshop",
+      "Premiere Pro",
+      "After Effects",
+      "Blender",
+      "Sony Vegas",
+    ],
+  };
 
-  const skills = ["Coding", "Design", "Video"];
-
-  const rotationMap = {
-    Coding: 0,
-    Design: 120,
-    Video: 240,
+  const toolIcons: Record<string, JSX.Element> = {
+    React: <SiReact />,
+    Angular: <SiAngular />,
+    JavaScript: <SiJavascript />,
+    "C#": <SiSharp />,
+    SpringBoot: <SiSpringboot />,
+    PHP: <SiPhp />,
+    MySQL: <SiMysql />,
+    Vue: <SiVuedotjs />,
+    Figma: <SiFigma />,
+    "Adobe XD": <SiAdobexd />,
+    Illustrator: <SiAdobeillustrator />,
+    Photoshop: <SiAdobephotoshop />,
+    "After Effects": <SiAdobeaftereffects />,
+    "Premiere Pro": <SiAdobepremierepro />,
+    Blender: <SiBlender />,
+    "Sony Vegas": <SiSony />,
   };
 
   return (
-    <div className="h-screen border-black">
-      <div className="w-full flex flex-col items-center justify-center lg:hidden mt-10">
-        <p className="text-white text-2xl font-bold pb-4 text-center">
-          My field in:
-        </p>
-        <ul className="text-white flex justify-between w-1/2 mx-auto mb-6">
-          {skills.map((skill) => (
-            <li
-              key={skill}
-              onClick={() =>
-                setActiveItem(skill as "Coding" | "Design" | "Video")
-              }
-              className={`cursor-pointer font-bold text-xl transition duration-300 
-              ${
-                active === skill
-                  ? "text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]"
-                  : "text-gray-400"
-              }
-              hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]`}
-            >
-              {skill}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="flex relative flex-col lg:flex-row mt-10 w-full">
-        <div className="w-full z-999 lg:w-3/5">
-          <InfoPanel active={active} />
-        </div>
-        <div className="w-full lg:w-3/5 flex flex-col items-center ">
-          <p className="text-white text-2xl font-bold pb-4 text-center hidden lg:block">
-            My field in:
+    <div className=" w-full flex flex-col items-center justify-center px-10 py-16">
+      <div className="flex flex-wrap justify-center pt-2 ">
+        {Skills.tools.map((item, index) => (
+          <p
+            key={index}
+            className={`flex items-center gap-2 p-2 m-1 border-2 text-white  transition duration-200 hover:scale-105 pointer-events-auto`}
+          >
+            {toolIcons[item] && (
+              <span className="text-[20px]">{toolIcons[item]}</span>
+            )}
+            {item}
           </p>
-          <ul className="text-white flex justify-between w-1/2 mx-auto hidden lg:flex">
-            {skills.map((skill) => (
-              <li
-                key={skill}
-                onClick={() =>
-                  setActiveItem(skill as "Coding" | "Design" | "Video")
-                }
-                className={`cursor-pointer font-bold text-xl transition duration-300 
-                ${
-                  active === skill
-                    ? "text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]"
-                    : "text-gray-400"
-                }
-                hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]`}
-              >
-                {skill}
-              </li>
-            ))}
-          </ul>
-
-          <div className="w-full h-[400px] overflow-hidden top-40 absolute z-1 opacity-25 lg:block lg:opacity-100 ">
-            <Pedestals rotationY={rotationMap[active]} />
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

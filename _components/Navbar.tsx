@@ -4,7 +4,7 @@ import ThreeScene from "./threejs/ThreeScene";
 
 export default function Navbar() {
   return (
-    <nav className="flex items-center shadow-lg border-1 sticky top-0 border-cyan-100  justify-between px-6  bg-primal text-white m-4">
+    <nav className="flex items-center shadow-lg border-1  border-cyan-100  justify-between px-6  bg-primal text-white m-4">
       <div className="w-16 ">
         <ThreeScene />
       </div>

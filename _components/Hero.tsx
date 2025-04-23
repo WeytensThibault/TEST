@@ -6,12 +6,12 @@ export default function Hero() {
   return (
     <>
       {/* 👇 3D Torus in the background */}
-      <div className="absolute inset-0 z-0 top-10 pointer-events-none">
+      <div className="absolute inset-0 z-0 top-2 pointer-events-none">
         <TorusModel />
       </div>
 
       {/* 👇 Hero content */}
-      <div className="relative h-screen flex flex-col justify-center items-center text-center px-6 z-10">
+      <div className="relative h-100 flex flex-col justify-center items-center text-center px-6 mt-15 z-10">
         <h1 className="text-white text-7xl md:text-8xl font-extrabold drop-shadow-lg">
           Thibault Weytens
         </h1>
@@ -19,10 +19,10 @@ export default function Hero() {
           Creative Developer & Student
         </h2>
 
-        <div className="mt-8 text-white text-xl md:text-2xl space-y-2 font-light">
-          <p>🎂 {age} years old</p>
-          <p>📍 Based in Belgium</p>
-          <p>🎓 Studying at Howest, VTI Deinze</p>
+        <div className="mt-8 text-white text-md  font-light">
+          <p>{age} years old</p>
+          <p>Belgium</p>
+          <p>Howest, VTI Deinze</p>
         </div>
       </div>
     </>

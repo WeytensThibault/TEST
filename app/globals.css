@@ -1,7 +1,11 @@
+@import url("https://use.typekit.net/twk3tbz.css");
+
 @import "tailwindcss";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 :root {
   --red: #ff0000;
   --black: #000000;
@@ -9,9 +13,8 @@
   --foreground: #171717;
   --background: #ffffff;
   --gray: #404040;
-
   --font-sans: "Geist Sans", sans-serif;
-  --font-mono: "Geist Mono", monospace;
+  --font-mono: "ivyepic-variable", sans-serif;
 
   --color-black: var(--foreground);
   --color-red: var(--red);
@@ -34,9 +37,9 @@
   --color-gray: var(--gray);
 }
 body {
-  background-color: #171717;
+  background-color: var(--background);
   color: var(--color-foreground);
-  font-family: var(--font-sans);
+  font-family: var(--font-mono);
 }
 
 @keyframes fadeOutRight {
