@@ -18,18 +18,18 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-[500] transition-all duration-300 overflow-hidden ${
+      className={`fixed top-0 left-0 right-0 z-[500] transition-all duration-300  ${
         isAtTop
           ? "w-2/3 opacity-100"
-          : "w-44 opacity-50 hover:w-2/3   hover:opacity-100   "
+          : "w-49 opacity-50 hover:w-2/3   hover:opacity-100   "
       } bg-background2 text-white shadow-md h-16 mx-auto rounded-b-lg flex items-center m-5`}
     >
       <div className="absolute left-0">
-        <Image src="/svg/left.svg" alt="left icon" width={130} height={130} />
+        <Image src="/svg/left.svg" alt="left icon" width={160} height={160} />
       </div>
 
       <div className="absolute right-0">
-        <Image src="/svg/right.svg" alt="right icon" width={80} height={80} />
+        <Image src="/svg/right.svg" alt="right icon" width={97} height={97} />
       </div>
 
       <div className="container mx-auto flex justify-center">
