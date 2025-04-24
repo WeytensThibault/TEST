@@ -98,7 +98,7 @@ export default function InfoPanel({ active }: InfoPanelProps) {
 
   return (
     <div className="px-20">
-      <p className="text-white text-2xl font-bold pb-4">My skills:</p>
+      {/* <p className="text-white text-2xl font-bold pb-4">My skills:</p>
       <div className="flex w-full min-h-screen">
         <div className="relative w-[4px] pl-10">
           <div className="absolute left-1/2 top-0 h-3/6 w-[2px] bg-white rounded-full shadow-[0_0_8px_2px_rgba(255,255,255,0.6)]" />
@@ -128,7 +128,7 @@ export default function InfoPanel({ active }: InfoPanelProps) {
             ))}
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

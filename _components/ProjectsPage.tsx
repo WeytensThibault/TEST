@@ -21,7 +21,7 @@ export default function ProjectsPagea() {
 
   return (
     <>
-      <div className="mb-15 mt-">
+      <div className="mb-15 bg-background2">
         <h1 className="text-4xl  text-white font-bold text-center">
           Worked at
         </h1>

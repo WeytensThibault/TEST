@@ -5,7 +5,7 @@ import ProjectsPage from "../_components/ProjectsPage";
 
 export default function Home() {
   return (
-    <div>
+    <div className="">
       <Navbar />
       <Hero />
       <SkillsPage />

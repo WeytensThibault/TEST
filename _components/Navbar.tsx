@@ -18,8 +18,10 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 overflow-hidden ${
-        isAtTop ? "w-2/3 opacity-100" : "w-44 hover:w-2/3"
+      className={`fixed top-0 left-0 right-0 z-[500] transition-all duration-300 overflow-hidden ${
+        isAtTop
+          ? "w-2/3 opacity-100"
+          : "w-44 opacity-50 hover:w-2/3   hover:opacity-100   "
       } bg-background2 text-white shadow-md h-16 mx-auto rounded-b-lg flex items-center m-5`}
     >
       <div className="absolute left-0">
@@ -30,7 +32,6 @@ export default function Navbar() {
         <Image src="/svg/right.svg" alt="right icon" width={80} height={80} />
       </div>
 
-      {/* Main Container with Links */}
       <div className="container mx-auto flex justify-center">
         <ul className="flex justify-evenly space-x-10 font-bold">
           <li>

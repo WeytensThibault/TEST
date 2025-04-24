@@ -29,6 +29,7 @@
 @theme inline {
   --color-background: var(--green1);
   --color-background2: var(--green2);
+  --color-background3: var(--yellowish);
 }
 
 body {
