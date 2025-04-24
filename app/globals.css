@@ -33,7 +33,7 @@
     --color-background: var(--background);
   }
 }
-@theme {
+@theme inline {
   --color-gray: var(--gray);
 }
 body {

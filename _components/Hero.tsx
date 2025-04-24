@@ -11,7 +11,7 @@ export default function Hero() {
       </div>
 
       {/* 👇 Hero content */}
-      <div className="relative h-100 flex flex-col justify-center items-center text-center px-6 mt-15 z-10">
+      <div className="relative h-100 top-20 flex flex-col justify-center items-center text-center px-6 mt-15 z-10">
         <h1 className="text-white text-7xl md:text-8xl font-extrabold drop-shadow-lg">
           Thibault Weytens
         </h1>
