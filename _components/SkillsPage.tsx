@@ -18,27 +18,25 @@ export default function Skillspage() {
   };
 
   return (
-    <div className=" border-black">
-      <h1 className="text-4xl text-white font-bold text-center">My skills:</h1>
-
+    <div className="mt-30 border-black">
       <div className="w-full flex flex-col items-center justify-center lg:hidden mt-10">
         <p className="text-white text-2xl font-bold pb-4 text-center">
           My field in:
         </p>
-        <ul className="text-white flex justify-between w-1/2 mx-auto mb-6">
+        <ul className="text-white flex  justify-between w-1/2 mx-auto mb-6">
           {skills.map((skill) => (
             <li
               key={skill}
               onClick={() =>
                 setActiveItem(skill as "Coding" | "Design" | "Video")
               }
-              className={`cursor-pointer font-bold text-xl transition duration-300 
+              className={`cursor-pointer  font-bold text-xl transition duration-300 
               ${
                 active === skill
                   ? "text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]"
                   : "text-white"
               }
-              hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]`}
+              hover:text-white  hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]`}
             >
               {skill}
             </li>
@@ -61,13 +59,13 @@ export default function Skillspage() {
                 onClick={() =>
                   setActiveItem(skill as "Coding" | "Design" | "Video")
                 }
-                className={`cursor-pointer font-bold text-xl transition duration-300 
-                ${
-                  active === skill
-                    ? "text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]"
-                    : "text-white"
-                }
-                hover:text-white hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]`}
+                className={`cursor-pointer border-2 border-white py-1 px-2 font-bold text-xl transition duration-300 transform
+        ${
+          active === skill
+            ? "bg-white text-black scale-105 border-white drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]"
+            : "text-white"
+        }
+        hover:scale-110 hover:bg-white hover:text-black `}
               >
                 {skill}
               </li>
