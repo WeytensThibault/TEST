@@ -18,7 +18,7 @@ export default function Skillspage() {
   };
 
   return (
-    <div className="mt-30 border-black">
+    <div className="mt-60 border-black  h-150">
       <div className="w-full flex flex-col items-center justify-center lg:hidden mt-10">
         <p className="text-white text-2xl font-bold pb-4 text-center">
           My field in:
@@ -45,12 +45,9 @@ export default function Skillspage() {
       </div>
 
       <div className="flex relative flex-col lg:flex-row mt-10 w-full">
-        <div className="w-full z-999 lg:w-3/5">
-          <InfoPanel active={active} />
-        </div>
         <div className="w-full lg:w-3/5 flex flex-col items-center ">
           <p className="text-white text-2xl font-bold pb-4 text-center hidden lg:block">
-            My field in:
+            Working in:
           </p>
           <ul className="text-white flex justify-between w-1/2 mx-auto hidden lg:flex">
             {skills.map((skill) => (
@@ -75,6 +72,9 @@ export default function Skillspage() {
           <div className="w-full h-[400px] overflow-hidden top-40 absolute z-1 opacity-25 lg:block lg:opacity-100 ">
             <Pedestals rotationY={rotationMap[active]} />
           </div>
+        </div>
+        <div className="w-full lg:w-3/5">
+          <InfoPanel active={active} />
         </div>
       </div>
     </div>

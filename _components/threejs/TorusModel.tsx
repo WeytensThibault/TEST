@@ -3,8 +3,12 @@
 import React, { useRef, useEffect } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-
-const TorusModel: React.FC = () => {
+interface TorusModelProps {
+  modelPath?: string; // Make it optional with a default value
+}
+const TorusModel: React.FC<TorusModelProps> = ({
+  modelPath = "/models/torus.glb",
+}) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const modelRef = useRef<THREE.Object3D | null>(null); // Initialize with null
 
@@ -28,7 +32,7 @@ const TorusModel: React.FC = () => {
 
     const loader = new GLTFLoader();
     loader.load(
-      "/models/torus.glb",
+      modelPath,
       (gltf) => {
         const model = gltf.scene;
         scene.add(model);

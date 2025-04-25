@@ -1,5 +1,4 @@
 @import url("https://use.typekit.net/twk3tbz.css");
-
 @import "tailwindcss";
 
 @tailwind base;
@@ -13,8 +12,8 @@
   --foreground: #171717;
   --background: #ffffff;
   --gray: #404040;
-  --font-sans: "Geist Sans", sans-serif;
-  --font-mono: "ivyepic-variable", sans-serif;
+  --font-condor: "condor", sans-serif;
+  --font-mono: "Geist Sans", sans-serif;
 
   --color-black: var(--foreground);
   --color-red: var(--red);
@@ -25,7 +24,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #000000;
     --foreground: #ededed;
 
     --color-black: var(--background);
@@ -35,6 +34,7 @@
 }
 @theme inline {
   --color-gray: var(--gray);
+  --font-title: var(--font-condor);
 }
 body {
   background-color: var(--background);
