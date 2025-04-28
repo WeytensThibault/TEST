@@ -1,7 +1,9 @@
+"use client";
+
 import TorusModel from "./threejs/TorusModel";
+import { useState } from "react";
 
 export default function ProjectsPagea() {
-  // Array of work experience data
   const workExperience = [
     {
       logo: "./img/mateco.png",
@@ -20,39 +22,56 @@ export default function ProjectsPagea() {
     },
   ];
 
-  // ---- PROJECT DATA ----
   const projects = [
     {
       image: "/your-image.jpg",
       title: "Pokewalker",
       technologies: ["Flutter", "Firebase"],
       description: "A mobile app to motivate Pokémon fans to walk.",
+      longDescription:
+        " a mobile application designed to encourage physical activity among Pokémon enthusiasts by gamifying the walking experience. Built with Flutter for cross-platform compatibility and Firebase for backend services, this app transforms daily steps into an exciting Pokémon adventure.",
     },
     {
       image: "/your-image.jpg",
       title: "Make Your Move",
       technologies: ["Vue", "Tensorflow"],
       description:
-        "A application that uses AI to detect how many exercises you perform.",
+        "An application that uses AI to detect how many exercises you perform.",
+      longDescription:
+        "an innovative application that leverages artificial intelligence to track and count your physical exercises in real-time. Built using Vue.js for the frontend and TensorFlow for the AI capabilities, this application transforms the way users monitor their workout progress.",
     },
     {
       image: "/your-image.jpg",
       title: "Bubbles & Breeze",
       technologies: ["Craft CMS", "HTML/CSS/JS"],
       description:
-        "A school project where we had to create a webshop for the company Bubbles & breeze.",
+        "A school project where we had to create a webshop for the company Bubbles & Breeze.",
+      longDescription:
+        "Bubbles & Breeze is a comprehensive e-commerce website developed as an academic project, showcasing the implementation of modern web development techniques and content management systems. This project demonstrates the full lifecycle of creating a functional webshop for a fictional bath and body care company.",
     },
     {
       image: "/your-image.jpg",
       title: "Weight scanner app",
       technologies: ["Tensorflow/openCV", "Flutter"],
       description: "A mobile app used to easily track your fitness. (WIP)",
+      longDescription:
+        "A mobile fitness tracking solution currently under development, designed to simplify the process of monitoring and recording workout data. By leveraging advanced computer vision technology, this application aims to revolutionize how fitness enthusiasts track their progress in the gym.",
     },
   ];
 
+  const [selectedProject, setSelectedProject] = useState<number | null>(null);
+
+  const handleLearnMore = (index: number) => {
+    setSelectedProject(index);
+  };
+
+  const handleClosePanel = () => {
+    setSelectedProject(null);
+  };
+
   return (
     <>
-      <div className="mb-15 ">
+      <div className="mb-15">
         <h1 className="text-4xl text-white font-bold text-center">Worked at</h1>
 
         <div className="flex flex-col md:flex-row justify-center gap-6 mt-4 px-10">
@@ -66,7 +85,6 @@ export default function ProjectsPagea() {
                 src={job.logo}
                 alt={`${job.title} Logo`}
               />
-
               <div className="flex-grow">
                 <div className="flex items-baseline justify-between">
                   <h2 className="text-xl font-semibold">
@@ -83,16 +101,18 @@ export default function ProjectsPagea() {
           ))}
         </div>
       </div>
-      <div className="relative  text-white mt-10">
+
+      <div className="relative text-white mt-10 mb-30">
         <h2 className="text-3xl font-bold text-center mb-6">Projects</h2>
         <div className="absolute inset-0 -z-[100] -top-0 pointer-events-none">
           <TorusModel modelPath="/models/torus2.glb" />
         </div>
-        <div className="flex flex-wrap  justify-center gap-8 px-4">
+
+        <div className="flex flex-wrap justify-center gap-8 px-4 relative z-10">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="w-full bg-black md:w-[270px] z-50 bg-dark border-1 border-white overflow-hidden"
+              className="w-full md:w-[270px] border-1 border-white overflow-hidden bg-black"
             >
               <img
                 src={project.image}
@@ -113,10 +133,54 @@ export default function ProjectsPagea() {
                     </span>
                   ))}
                 </div>
-                <p className="text-white text-sm">{project.description}</p>
+                <p className="text-white text-sm mb-4">{project.description}</p>
+                <button
+                  onClick={() => handleLearnMore(index)}
+                  className="bg-black border-2 border-white cursor-pointer flex align-center justify-center mx-auto text-white px-4 py-2 rounded hover:bg-white hover:text-black transition duration-300"
+                >
+                  Learn More
+                </button>
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="fixed  top-0 left-0 h-screen w-full z-[999] pointer-events-none">
+          <div
+            className={`absolute   border-white border-2 top-0 left-0 h-full transition-all duration-500 ease-in-out
+            ${selectedProject !== null ? "translate-x-0" : "-translate-x-full"}
+            w-full md:w-1/2 bg-black/90 backdrop-blur-lg p-8 pointer-events-auto`}
+          >
+            {selectedProject !== null && (
+              <div className="flex flex-col justify-center  h-full text-white  relative">
+                <button
+                  onClick={handleClosePanel}
+                  className="absolute top-6 cursor-pointer right-6 bg-white text-black px-3 py-1 rounded hover:bg-gray-300 transition"
+                >
+                  X
+                </button>
+
+                <h3 className="text-3xl font-bold mb-4">
+                  {projects[selectedProject].title}
+                </h3>
+                <p className="text-gray-300 mb-6">
+                  {projects[selectedProject].longDescription}
+                </p>
+                <div className="flex flex-wrap gap-2 ">
+                  {projects[selectedProject].technologies.map(
+                    (tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="bg-white text-black text-sm px-3 py-1 rounded"
+                      >
+                        {tech}
+                      </span>
+                    )
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </>

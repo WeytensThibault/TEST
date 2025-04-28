@@ -5,12 +5,10 @@ export default function Hero() {
 
   return (
     <>
-      {/* 👇 3D Torus in the background */}
       <div className="absolute inset-0 z-0 -top-45 pointer-events-none">
         <TorusModel />
       </div>
 
-      {/* 👇 Hero content */}
       <div className=" font-title relative h-100 top-30 flex flex-col justify-center items-center text-center px-6 mt-15 z-10">
         <h1 className="text-white  text-7xl md:text-8xl font-extrabold drop-shadow-lg">
           Thibault Weytens
