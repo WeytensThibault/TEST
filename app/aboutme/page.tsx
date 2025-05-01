@@ -5,6 +5,7 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import Navbar from "../../_components/Navbar";
 import Footer from "../../_components/Footer";
+import Image from "next/image";
 
 const AboutMe: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -91,9 +92,11 @@ const AboutMe: React.FC = () => {
       <Navbar />
       <div className="flex mt-25 flex-col md:flex-row items-center md:items-start justify-center md:justify-between px-4 md:px-16 py-10">
         <div className="w-full md:w-1/2 flex justify-center">
-          <img
+          <Image
             src="/img/me.png"
             alt="About Me"
+            width={400}
+            height={400}
             className="shadow-lg border-2 border-white p-4 max-w-full h-auto"
           />
         </div>
@@ -114,10 +117,10 @@ const AboutMe: React.FC = () => {
             <span className="font-bold">Thibault Weytens</span>.
           </p>
           <p className="mb-4">
-            I'm a {age}-year-old male originally from Belgium, raised on a farm
-            where I learned the value of hard work early on. After graduating as
-            a carpenter, I followed my passion for technology and pursued
-            further studies in computer-related fields.
+            I&#39;m a {age}-year-old male originally from Belgium, raised on a
+            farm where I learned the value of hard work early on. After
+            graduating as a carpenter, I followed my passion for technology and
+            pursued further studies in computer-related fields.
           </p>
         </div>
       </div>
@@ -129,12 +132,12 @@ const AboutMe: React.FC = () => {
           </h1>
           <p className="mb-4">
             I am a student at Howest, studying MCT (Multimedia and Creative
-            Technologies)(Multimedia and Creative Technologies), passionate
-            about all things computer-related especially coding and 3D modeling.
+            Technologies), passionate about all things computer-related
+            especially coding and 3D modeling.
           </p>
           <p className="mb-4">
-            I'm constantly working to expand my skill set, aiming to grow from
-            backend development into cloud engineering, where I can build
+            I&#39;m constantly working to expand my skill set, aiming to grow
+            from backend development into cloud engineering, where I can build
             scalable, modern solutions that bridge creativity and performance.
           </p>
         </div>
