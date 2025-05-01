@@ -90,7 +90,7 @@ export default function NotFound() {
     <div className=" flex flex-col justify-center items-center">
       <div ref={containerRef} className="w-full h-[400px] z-[-1]" />
       <p className="text-4xl font-bold mt-4 text-center px-4">
-        Sorry, the page you're looking for doesn't exist.
+        Sorry, the page you&#39;re looking for doesn&#39;t exist.
       </p>
     </div>
   );
