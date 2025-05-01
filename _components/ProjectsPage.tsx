@@ -2,6 +2,7 @@
 
 import TorusModel from "./threejs/TorusModel";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function ProjectsPagea() {
   const workExperience = [
@@ -80,9 +81,11 @@ export default function ProjectsPagea() {
               key={index}
               className="flex items-start border-1 border-white p-6 shadow-lg w-full max-w-md text-white"
             >
-              <img
-                className="h-12  w-12 rounded-lg mr-2 object-cover"
+              <Image
                 src={job.logo}
+                width={50}
+                height={50}
+                className="h-12  w-12 rounded-lg mr-2 object-cover"
                 alt={`${job.title} Logo`}
               />
               <div className="flex-grow">
@@ -114,7 +117,9 @@ export default function ProjectsPagea() {
               key={index}
               className="w-full p-4 md:w-[270px] border-1 border-white overflow-hidden bg-black"
             >
-              <img
+              <Image
+                width={50}
+                height={50}
                 src={project.image}
                 alt={`${project.title} Preview`}
                 className="w-full h-48 object-cover mb-4 rounded-xl"
@@ -159,7 +164,9 @@ export default function ProjectsPagea() {
                 >
                   X
                 </button>
-                <img
+                <Image
+                  width={50}
+                  height={50}
                   src={projects[selectedProject].image}
                   alt={`${projects[selectedProject].title} Preview`}
                   className="w-full h-48 object-cover mb-4 rounded-xl"
