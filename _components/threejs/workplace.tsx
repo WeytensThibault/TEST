@@ -20,7 +20,6 @@ const WorkPlace: React.FC = () => {
     const width = containerRef.current.clientWidth;
     const height = containerRef.current.clientHeight;
 
-    // Use a fallback camera until we load the GLB's camera
     const fallbackCamera = new THREE.PerspectiveCamera(
       50,
       width / height,
@@ -43,14 +42,12 @@ const WorkPlace: React.FC = () => {
         scene.add(model);
         modelRef.current = model;
 
-        // Find the GLB camera by name
         const cameraFromGLB = gltf.cameras?.find(
           (c) => c.name === "maincamera"
         );
         if (cameraFromGLB) {
           cameraRef.current = cameraFromGLB;
 
-          // If it's a PerspectiveCamera, update aspect and projection matrix
           if (cameraFromGLB instanceof THREE.PerspectiveCamera) {
             cameraFromGLB.aspect = width / height;
             cameraFromGLB.updateProjectionMatrix();
@@ -83,7 +80,6 @@ const WorkPlace: React.FC = () => {
       const newHeight = containerRef.current?.clientHeight || 1;
       renderer.setSize(newWidth, newHeight);
 
-      // Ensure the aspect ratio is updated
       const cam = cameraRef.current;
       if (cam instanceof THREE.PerspectiveCamera) {
         cam.aspect = newWidth / newHeight;

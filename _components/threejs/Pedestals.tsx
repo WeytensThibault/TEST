@@ -26,7 +26,6 @@ const Pedestals: React.FC<PedestalsProps> = ({ rotationY }) => {
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // Clear container contents to prevent stacking
     while (containerRef.current.firstChild) {
       containerRef.current.removeChild(containerRef.current.firstChild);
     }
@@ -35,7 +34,6 @@ const Pedestals: React.FC<PedestalsProps> = ({ rotationY }) => {
     const height = containerRef.current.clientHeight;
     const aspectRatio = width / height;
 
-    // Initialize scene, camera, and renderer
     const scene = new THREE.Scene();
     sceneRef.current = scene;
 
@@ -48,12 +46,10 @@ const Pedestals: React.FC<PedestalsProps> = ({ rotationY }) => {
     containerRef.current.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
-    // Load GLB model
     const loader = new GLTFLoader();
     loader.load(
       "./models/LANDING.glb",
       (gltf) => {
-        // Remove any existing model to prevent duplication
         if (modelRef.current && sceneRef.current) {
           sceneRef.current.remove(modelRef.current);
           modelRef.current.traverse((child) => {
@@ -98,14 +94,12 @@ const Pedestals: React.FC<PedestalsProps> = ({ rotationY }) => {
       }
     );
 
-    // Animation loop
     const animate = () => {
       if (rendererRef.current && sceneRef.current && cameraRef.current) {
-        // Animate rotationY
         if (emptyRef.current) {
           const target = THREE.MathUtils.degToRad(targetRotationY.current);
           const current = currentRotationY.current;
-          const lerped = THREE.MathUtils.lerp(current, target, 0.1); // 0.1 = smoothing factor
+          const lerped = THREE.MathUtils.lerp(current, target, 0.1);
           emptyRef.current.rotation.y = lerped;
           currentRotationY.current = lerped;
         }
@@ -116,14 +110,11 @@ const Pedestals: React.FC<PedestalsProps> = ({ rotationY }) => {
     };
     animationFrameId.current = requestAnimationFrame(animate);
 
-    // Cleanup function
     return () => {
-      // Cancel animation frame
       if (animationFrameId.current !== null) {
         cancelAnimationFrame(animationFrameId.current);
       }
 
-      // Dispose of model
       if (modelRef.current && sceneRef.current) {
         sceneRef.current.remove(modelRef.current);
         modelRef.current.traverse((child) => {
@@ -139,7 +130,6 @@ const Pedestals: React.FC<PedestalsProps> = ({ rotationY }) => {
         modelRef.current = null;
       }
 
-      // Dispose of renderer
       if (rendererRef.current) {
         rendererRef.current.renderLists.dispose();
         rendererRef.current.dispose();
@@ -149,7 +139,6 @@ const Pedestals: React.FC<PedestalsProps> = ({ rotationY }) => {
         rendererRef.current = null;
       }
 
-      // Clear scene
       if (sceneRef.current) {
         while (sceneRef.current.children.length > 0) {
           sceneRef.current.remove(sceneRef.current.children[0]);
@@ -157,14 +146,12 @@ const Pedestals: React.FC<PedestalsProps> = ({ rotationY }) => {
         sceneRef.current = null;
       }
 
-      // Clear container contents
       if (containerRef.current) {
         while (containerRef.current.firstChild) {
           containerRef.current.removeChild(containerRef.current.firstChild);
         }
       }
 
-      // Clear camera and other refs
       cameraRef.current = null;
       emptyRef.current = null;
     };

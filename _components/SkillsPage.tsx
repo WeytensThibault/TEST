@@ -18,8 +18,8 @@ export default function Skillspage() {
   };
 
   return (
-    <div className="mt-60 border-black  h-150">
-      <div className="w-full flex flex-col items-center justify-center lg:hidden mt-10">
+    <div className="mt-20 border-black md:mt-60">
+      <div className="w-full  flex flex-col items-center justify-center lg:hidden mt-0">
         <p className="text-white text-2xl font-bold pb-4 text-center">
           My field in:
         </p>

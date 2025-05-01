@@ -13,7 +13,6 @@ const AboutMe: React.FC = () => {
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // Clear container contents to prevent stacking
     while (containerRef.current.firstChild) {
       containerRef.current.removeChild(containerRef.current.firstChild);
     }
@@ -23,7 +22,7 @@ const AboutMe: React.FC = () => {
     const height = containerRef.current.clientHeight;
 
     const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 100);
-    camera.position.z = 4; // Adjust camera position as needed
+    camera.position.z = 4;
 
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setPixelRatio(window.devicePixelRatio);
@@ -32,7 +31,7 @@ const AboutMe: React.FC = () => {
 
     const loader = new GLTFLoader();
     loader.load(
-      "/models/cube.glb", // Adjust the path to your model
+      "/models/cube.glb",
       (gltf) => {
         const model = gltf.scene;
         scene.add(model);
@@ -50,7 +49,6 @@ const AboutMe: React.FC = () => {
     const animate = () => {
       requestAnimationFrame(animate);
 
-      // Slowly rotate the model
       if (modelRef.current) {
         modelRef.current.rotation.y += 0.005;
       }
@@ -78,22 +76,20 @@ const AboutMe: React.FC = () => {
 
   const age = new Date().getFullYear() - 2003;
 
-  // Cursor blink logic
   const [showCursor, setShowCursor] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setShowCursor((prev) => !prev);
-    }, 1000); // Toggle every 1 second
+    }, 1000);
 
-    return () => clearInterval(interval); // Cleanup
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <>
       <Navbar />
       <div className="flex mt-25 flex-col md:flex-row items-center md:items-start justify-center md:justify-between px-4 md:px-16 py-10">
-        {/* Left Section: Image */}
         <div className="w-full md:w-1/2 flex justify-center">
           <img
             src="/img/me.png"
@@ -102,7 +98,6 @@ const AboutMe: React.FC = () => {
           />
         </div>
 
-        {/* Right Section: Text */}
         <div className="w-full md:w-1/2 mt-8 md:mt-0 md:pl-10 flex flex-col justify-center">
           <h1 className="relative text-4xl md:text-6xl mb-4 font-code font-bold">
             ~Whoami{" "}
@@ -119,9 +114,10 @@ const AboutMe: React.FC = () => {
             <span className="font-bold">Thibault Weytens</span>.
           </p>
           <p className="mb-4">
-            I am a {age} year old male from Belgium, grew up on a farm,
-            graduated as a carpenter, but continued my love for computers by
-            studying in a more computer relative studies.
+            I'm a {age}-year-old male originally from Belgium, raised on a farm
+            where I learned the value of hard work early on. After graduating as
+            a carpenter, I followed my passion for technology and pursued
+            further studies in computer-related fields.
           </p>
         </div>
       </div>
@@ -133,12 +129,16 @@ const AboutMe: React.FC = () => {
           </h1>
           <p className="mb-4">
             I am a student at Howest, studying MCT (Multimedia and Creative
-            Technologies). I am passionate about everything with a computer,
-            especially Coding and 3D modeling.
+            Technologies)(Multimedia and Creative Technologies), passionate
+            about all things computer-related especially coding and 3D modeling.
+          </p>
+          <p className="mb-4">
+            I'm constantly working to expand my skill set, aiming to grow from
+            backend development into cloud engineering, where I can build
+            scalable, modern solutions that bridge creativity and performance.
           </p>
         </div>
 
-        {/* 3D Model Section */}
         <div className="w-full md:w-1/2 flex justify-center">
           <div ref={containerRef} className="relative w-full h-[400px] " />
         </div>

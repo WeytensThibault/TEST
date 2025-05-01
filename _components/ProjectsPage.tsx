@@ -71,7 +71,7 @@ export default function ProjectsPagea() {
 
   return (
     <>
-      <div className="mb-15">
+      <div className="mb-15 mt-10 sm:mt-0">
         <h1 className="text-4xl text-white font-bold text-center">Worked at</h1>
 
         <div className="flex flex-col md:flex-row justify-center gap-6 mt-4 px-10">

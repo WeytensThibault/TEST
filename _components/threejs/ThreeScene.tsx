@@ -18,7 +18,6 @@ const ThreeScene: React.FC = () => {
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // Clear container contents to prevent stacking
     while (containerRef.current.firstChild) {
       containerRef.current.removeChild(containerRef.current.firstChild);
     }
@@ -27,7 +26,6 @@ const ThreeScene: React.FC = () => {
     const height = containerRef.current.clientHeight;
     const aspectRatio = width / height;
 
-    // Initialize scene, camera, and renderer
     const scene = new THREE.Scene();
     sceneRef.current = scene;
 
@@ -41,12 +39,10 @@ const ThreeScene: React.FC = () => {
     containerRef.current.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
-    // Load GLB model
     const loader = new GLTFLoader();
     loader.load(
       "/models/laptop.glb",
       (gltf) => {
-        // Ensure no previous model exists in the scene
         if (modelRef.current && sceneRef.current) {
           sceneRef.current.remove(modelRef.current);
           modelRef.current.traverse((child) => {
@@ -68,7 +64,6 @@ const ThreeScene: React.FC = () => {
         scene.add(model);
         modelRef.current = model;
 
-        // Add lights
         const ambientLight = new THREE.AmbientLight(0xffffff, 1);
         scene.add(ambientLight);
 
@@ -82,7 +77,6 @@ const ThreeScene: React.FC = () => {
       }
     );
 
-    // Animation loop
     const animate = () => {
       if (
         modelRef.current &&
@@ -98,7 +92,6 @@ const ThreeScene: React.FC = () => {
     };
     animationFrameId.current = requestAnimationFrame(animate);
 
-    // Mouse move handler
     const onMouseMove = (event: MouseEvent) => {
       if (!containerRef.current) return;
       const mouseX = event.clientX;
@@ -109,17 +102,13 @@ const ThreeScene: React.FC = () => {
 
     containerRef.current.addEventListener("mousemove", onMouseMove);
 
-    // Cleanup function
     return () => {
-      // Remove mouse event listener
       containerRef.current?.removeEventListener("mousemove", onMouseMove);
 
-      // Cancel animation frame
       if (animationFrameId.current !== null) {
         cancelAnimationFrame(animationFrameId.current);
       }
 
-      // Dispose of model
       if (modelRef.current && sceneRef.current) {
         sceneRef.current.remove(modelRef.current);
         modelRef.current.traverse((child) => {
@@ -135,7 +124,6 @@ const ThreeScene: React.FC = () => {
         modelRef.current = null;
       }
 
-      // Dispose of renderer
       if (rendererRef.current) {
         rendererRef.current.renderLists.dispose();
         rendererRef.current.dispose();
@@ -145,7 +133,6 @@ const ThreeScene: React.FC = () => {
         rendererRef.current = null;
       }
 
-      // Clear scene
       if (sceneRef.current) {
         while (sceneRef.current.children.length > 0) {
           sceneRef.current.remove(sceneRef.current.children[0]);
@@ -153,14 +140,12 @@ const ThreeScene: React.FC = () => {
         sceneRef.current = null;
       }
 
-      // Clear container contents again
       if (containerRef.current) {
         while (containerRef.current.firstChild) {
           containerRef.current.removeChild(containerRef.current.firstChild);
         }
       }
 
-      // Clear camera
       cameraRef.current = null;
     };
   }, []);

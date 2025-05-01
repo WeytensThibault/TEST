@@ -50,7 +50,6 @@ const contentMap = {
   },
 };
 
-// Icon mapping
 const toolIcons: Record<string, JSX.Element> = {
   React: <SiReact />,
   Angular: <SiAngular />,
@@ -97,9 +96,12 @@ export default function InfoPanel({ active }: InfoPanelProps) {
   }
 
   return (
-    <div className="px-20 ">
+    <div className="px-10 sm:px-20 ">
       <div className="flex w-full min-h-screen">
-        <div className="relative w-[4px] pl-10">
+        <div
+          className="relative hidden w-[4px] pl-10  sm:block
+"
+        >
           <div className="absolute left-1/2 top-0 h-3/6 w-[2px] bg-white rounded-full shadow-[0_0_8px_2px_rgba(255,255,255,0.6)]" />
         </div>
 
