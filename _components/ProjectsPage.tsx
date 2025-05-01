@@ -24,7 +24,7 @@ export default function ProjectsPagea() {
 
   const projects = [
     {
-      image: "/your-image.jpg",
+      image: "/img/pokewalker.png",
       title: "Pokewalker",
       technologies: ["Flutter", "Firebase"],
       description: "A mobile app to motivate Pokémon fans to walk.",
@@ -32,7 +32,7 @@ export default function ProjectsPagea() {
         " a mobile application designed to encourage physical activity among Pokémon enthusiasts by gamifying the walking experience. Built with Flutter for cross-platform compatibility and Firebase for backend services, this app transforms daily steps into an exciting Pokémon adventure.",
     },
     {
-      image: "/your-image.jpg",
+      image: "/img/makeyourmove.png",
       title: "Make Your Move",
       technologies: ["Vue", "Tensorflow"],
       description:
@@ -41,7 +41,7 @@ export default function ProjectsPagea() {
         "an innovative application that leverages artificial intelligence to track and count your physical exercises in real-time. Built using Vue.js for the frontend and TensorFlow for the AI capabilities, this application transforms the way users monitor their workout progress.",
     },
     {
-      image: "/your-image.jpg",
+      image: "/img/b&b.png",
       title: "Bubbles & Breeze",
       technologies: ["Craft CMS", "HTML/CSS/JS"],
       description:
@@ -81,7 +81,7 @@ export default function ProjectsPagea() {
               className="flex items-start border-1 border-white p-6 shadow-lg w-full max-w-md text-white"
             >
               <img
-                className="h-12 w-12 rounded-lg mr-2 object-cover"
+                className="h-12  w-12 rounded-lg mr-2 object-cover"
                 src={job.logo}
                 alt={`${job.title} Logo`}
               />
@@ -108,18 +108,18 @@ export default function ProjectsPagea() {
           <TorusModel modelPath="/models/torus2.glb" />
         </div>
 
-        <div className="flex flex-wrap justify-center gap-8 px-4 relative z-10">
+        <div className="flex flex-wrap  justify-center gap-8 px-4 relative z-10">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="w-full md:w-[270px] border-1 border-white overflow-hidden bg-black"
+              className="w-full p-4 md:w-[270px] border-1 border-white overflow-hidden bg-black"
             >
               <img
                 src={project.image}
                 alt={`${project.title} Preview`}
-                className="w-full p-2 h-48 object-cover"
+                className="w-full h-48 object-cover mb-4 rounded-xl"
               />
-              <div className="p-6 text-black">
+              <div className=" text-black">
                 <h3 className="text-xl text-white font-semibold mb-2">
                   {project.title}
                 </h3>
@@ -147,7 +147,7 @@ export default function ProjectsPagea() {
 
         <div className="fixed  top-0 left-0 h-screen w-full z-[999] pointer-events-none">
           <div
-            className={`absolute   border-white border-2 top-0 left-0 h-full transition-all duration-500 ease-in-out
+            className={`absolute  border-white border-2 top-0 left-0 h-full transition-all duration-500 ease-in-out
             ${selectedProject !== null ? "translate-x-0" : "-translate-x-full"}
             w-full md:w-1/2 bg-black/90 backdrop-blur-lg p-8 pointer-events-auto`}
           >
@@ -159,7 +159,11 @@ export default function ProjectsPagea() {
                 >
                   X
                 </button>
-
+                <img
+                  src={projects[selectedProject].image}
+                  alt={`${projects[selectedProject].title} Preview`}
+                  className="w-full h-48 object-cover mb-4 rounded-xl"
+                />
                 <h3 className="text-3xl font-bold mb-4">
                   {projects[selectedProject].title}
                 </h3>

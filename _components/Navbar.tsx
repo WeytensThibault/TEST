@@ -14,6 +14,10 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       setIsAtTop(window.scrollY === 0);
+
+      if (window.scrollY === 0) {
+        setActiveSection("home");
+      }
     };
 
     window.addEventListener("scroll", handleScroll);

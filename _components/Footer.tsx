@@ -46,6 +46,13 @@ export default function Footer() {
             >
               Copy Email
             </button>
+            <a
+              href="./cv.ai"
+              download="Thibault_Weytens_Resume.pdf"
+              className="px-6 py-2 border-2 border-white rounded-full transition duration-300 hover:bg-white hover:text-black font-semibold"
+            >
+              Resume
+            </a>
           </div>
         </div>
       </div>
