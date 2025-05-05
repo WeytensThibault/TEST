@@ -72,10 +72,10 @@ export default function ProjectsPagea() {
 
   return (
     <>
-      <div className="mb-15 mt-10 sm:mt-0">
+      <div className=" ">
         <h1 className="text-4xl text-white font-bold text-center">Worked at</h1>
 
-        <div className="flex flex-col md:flex-row justify-center gap-6 mt-4 px-10">
+        <div className="flex  flex-col md:flex-row justify-center gap-6 mt-4 px-10">
           {workExperience.map((job, index) => (
             <div
               key={index}
@@ -85,7 +85,7 @@ export default function ProjectsPagea() {
                 src={job.logo}
                 width={50}
                 height={50}
-                className="h-12  w-12 rounded-lg mr-2 object-cover"
+                className="h-12  w-12  mr-2 object-cover"
                 alt={`${job.title} Logo`}
               />
               <div className="flex-grow">
@@ -122,7 +122,7 @@ export default function ProjectsPagea() {
                 height={50}
                 src={project.image}
                 alt={`${project.title} Preview`}
-                className="w-full h-48 object-cover mb-4 rounded-xl"
+                className="w-full h-48 object-cover mb-4 "
               />
               <div className=" text-black">
                 <h3 className="text-xl text-white font-semibold mb-2">

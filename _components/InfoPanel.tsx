@@ -97,7 +97,7 @@ export default function InfoPanel({ active }: InfoPanelProps) {
 
   return (
     <div className="px-10 sm:px-20 ">
-      <div className="flex w-full min-h-screen">
+      <div className="flex w-full ">
         <div
           className="relative hidden w-[4px] pl-10  sm:block
 "
@@ -107,10 +107,10 @@ export default function InfoPanel({ active }: InfoPanelProps) {
 
         <div className={`flex-1 px-4 py-2`}>
           <h1 className="text-white  text-xl font-semibold">
-            - My experience in {active}.
+            My experience in {active}.
           </h1>
           <p className={`text-white pt-4 ${fadeClass}`}>
-            - {currentContent.description}
+            {currentContent.description}
           </p>
 
           <div className="flex flex-wrap pt-2">

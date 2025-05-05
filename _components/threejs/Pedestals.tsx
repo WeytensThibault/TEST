@@ -157,7 +157,7 @@ const Pedestals: React.FC<PedestalsProps> = ({ rotationY }) => {
     };
   }, []);
 
-  return <div ref={containerRef} style={{ width: "100%", height: "50vh" }} />;
+  return <div ref={containerRef} style={{ height: "50vh" }} />;
 };
 
 export default Pedestals;

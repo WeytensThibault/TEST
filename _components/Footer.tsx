@@ -44,7 +44,7 @@ export default function Footer() {
               onClick={handleCopyEmail}
               className="px-6 py-2 border-2 border-white rounded-full transition duration-300 hover:bg-white hover:text-black font-semibold"
             >
-              Copy Email
+              Email
             </button>
             <a
               href="./cv.ai"
