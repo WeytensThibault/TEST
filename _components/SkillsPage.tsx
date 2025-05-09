@@ -5,20 +5,20 @@ import Pedestals from "../_components/threejs/Pedestals";
 import { useState } from "react";
 
 export default function Skillspage() {
-  const [active, setActiveItem] = useState<"Coding" | "Design" | "Video">(
+  const [active, setActiveItem] = useState<"Coding" | "Cloud" | "Video">(
     "Coding"
   );
 
-  const skills = ["Coding", "Design", "Video"];
+  const skills = ["Coding", "Cloud", "Video"];
 
   const rotationMap = {
     Coding: 0,
-    Design: 120,
+    Cloud: 120,
     Video: 240,
   };
 
   return (
-    <div className="mb-60 mt-20 border-black md:mt-15">
+    <div className="mb-20 mt-20 border-black md:mt-15">
       <div className="w-full  flex flex-col items-center justify-center lg:hidden mt-0">
         <p className="text-white text-2xl font-bold pb-4 text-center">
           My field in:
@@ -28,7 +28,7 @@ export default function Skillspage() {
             <li
               key={skill}
               onClick={() =>
-                setActiveItem(skill as "Coding" | "Design" | "Video")
+                setActiveItem(skill as "Coding" | "Cloud" | "Video")
               }
               className={`cursor-pointer px-2 font-bold text-xl transition duration-300 md:px-0 
               ${
@@ -54,24 +54,25 @@ export default function Skillspage() {
               <li
                 key={skill}
                 onClick={() =>
-                  setActiveItem(skill as "Coding" | "Design" | "Video")
+                  setActiveItem(skill as "Coding" | "Cloud" | "Video")
                 }
                 className={`cursor-pointer border-2 border-white py-1 px-2 font-bold text-xl transition duration-300 transform
-        ${
-          active === skill
-            ? "bg-white text-black scale-105 border-white drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]"
-            : "text-white"
-        }
-        hover:scale-110 hover:bg-white hover:text-black `}
+                  ${
+                    active === skill
+                      ? "bg-white text-black scale-105 border-white drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]"
+                      : "text-white"
+                  }
+                hover:scale-110 hover:bg-white hover:text-black `}
               >
                 {skill}
               </li>
             ))}
           </ul>
-
-          <div className="w-full overflow-hidden top-40 absolute z-1 opacity-25 lg:block lg:opacity-100 ">
+          <div className="w-full mt-10 h-full  lg:block lg:opacity-100">
             <Pedestals rotationY={rotationMap[active]} />
           </div>
+          {/* <div className="w-full  overflow-hidden h-300 absolute z-1 opacity-25  ">
+          </div> */}
         </div>
         <div className="w-full lg:w-3/5">
           <InfoPanel active={active} />

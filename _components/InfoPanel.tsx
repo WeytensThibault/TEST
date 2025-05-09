@@ -16,10 +16,13 @@ import {
   SiAdobepremierepro,
   SiBlender,
   SiSony,
+  SiAmazon,
+  SiDocker,
+  SiKubernetes,
 } from "react-icons/si";
 
 interface InfoPanelProps {
-  active: "Coding" | "Design" | "Video";
+  active: "Coding" | "Cloud" | "Video";
 }
 
 const contentMap = {
@@ -38,10 +41,10 @@ const contentMap = {
       "Java",
     ],
   },
-  Design: {
+  Cloud: {
     description:
-      "My journey in design started with UI/UX tools like Figma and Adobe XD. I focus on creating user-friendly, accessible interfaces and enjoy experimenting with animations and microinteractions, combining with 3D visuals.",
-    tools: ["Figma", "Adobe XD", "Illustrator", "Photoshop"],
+      "My cloud engineering began with a strong foundation in programming. While I'm still building my experience in this area, I’m passionate about learning cloud technologies and continuously expanding my skill set. I'm actively seeking opportunities, such as internships, to grow and gain hands-on experience in cloud environments.",
+    tools: ["Microsoft Azure", "AWS", "Docker", "Kubernetes"],
   },
   Video: {
     description:
@@ -60,6 +63,11 @@ const toolIcons: Record<string, JSX.Element> = {
   MySQL: <SiMysql />,
   Vue: <SiVuedotjs />,
 
+  // Cloud
+  Docker: <SiDocker />,
+  Kubernetes: <SiKubernetes />,
+
+  // Design & Video
   Figma: <SiFigma />,
   "Adobe XD": <SiAdobexd />,
   Illustrator: <SiAdobeillustrator />,
@@ -102,7 +110,7 @@ export default function InfoPanel({ active }: InfoPanelProps) {
           className="relative hidden w-[4px] pl-10  sm:block
 "
         >
-          <div className="absolute left-1/2 top-0 h-3/6 w-[2px] bg-white rounded-full shadow-[0_0_8px_2px_rgba(255,255,255,0.6)]" />
+          <div className="absolute left-1/2 top-0 h-full w-[2px] bg-white rounded-full shadow-[0_0_8px_2px_rgba(255,255,255,0.6)]" />
         </div>
 
         <div className={`flex-1 px-4 py-2`}>

@@ -51,7 +51,7 @@ export default function ProjectsPagea() {
         "Bubbles & Breeze is a comprehensive e-commerce website developed as an academic project, showcasing the implementation of modern web development techniques and content management systems. This project demonstrates the full lifecycle of creating a functional webshop for a fictional bath and body care company.",
     },
     {
-      image: "/your-image.jpg",
+      image: "/img/b&b.png",
       title: "Weight scanner app",
       technologies: ["Tensorflow/openCV", "Flutter"],
       description: "A mobile app used to easily track your fitness. (WIP)",
@@ -75,11 +75,11 @@ export default function ProjectsPagea() {
       <div className=" ">
         <h1 className="text-4xl text-white font-bold text-center">Worked at</h1>
 
-        <div className="flex  flex-col md:flex-row justify-center gap-6 mt-4 px-10">
+        <div className="flex  flex-col md:flex-row justify-center gap-6 mt-4 ">
           {workExperience.map((job, index) => (
             <div
               key={index}
-              className="flex items-start border-1 border-white p-6 shadow-lg w-full max-w-md text-white"
+              className="flex  border-1 border-white p-6 shadow-lg w-full max-w-md text-white"
             >
               <Image
                 src={job.logo}
@@ -111,20 +111,20 @@ export default function ProjectsPagea() {
           <TorusModel modelPath="/models/torus2.glb" />
         </div>
 
-        <div className="flex flex-wrap  justify-center gap-8 px-4 relative z-10">
+        <div className="flex flex-wrap m-4  justify-center gap-8 relative z-10">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="w-full p-4 md:w-[270px] border-1 border-white overflow-hidden bg-black"
+              className="w-full p-4 md:w-[270px] border-1 border-white overflow-hidden bg-black flex flex-col justify-between"
             >
               <Image
                 width={50}
                 height={50}
                 src={project.image}
                 alt={`${project.title} Preview`}
-                className="w-full h-48 object-cover mb-4 "
+                className="w-full h-48 object-cover mb-4"
               />
-              <div className=" text-black">
+              <div className="flex-grow text-black">
                 <h3 className="text-xl text-white font-semibold mb-2">
                   {project.title}
                 </h3>
@@ -139,13 +139,13 @@ export default function ProjectsPagea() {
                   ))}
                 </div>
                 <p className="text-white text-sm mb-4">{project.description}</p>
-                <button
-                  onClick={() => handleLearnMore(index)}
-                  className="bg-black border-2 border-white cursor-pointer flex align-center justify-center mx-auto text-white px-4 py-2 rounded hover:bg-white hover:text-black transition duration-300"
-                >
-                  Learn More
-                </button>
               </div>
+              <button
+                onClick={() => handleLearnMore(index)}
+                className="bg-black border-2 border-white cursor-pointer flex align-center justify-center mt-auto text-white px-4 py-2 rounded hover:bg-white hover:text-black transition duration-300"
+              >
+                Learn More
+              </button>
             </div>
           ))}
         </div>

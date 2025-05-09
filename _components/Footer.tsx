@@ -16,7 +16,7 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="text-white py-6 border-t-2 border-white relative"
+      className="text-white py-6 py-20 border-t-2 border-white relative"
     >
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">

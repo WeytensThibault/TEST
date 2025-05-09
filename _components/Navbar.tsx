@@ -47,10 +47,10 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-1/2 transform -translate-x-1/2 z-[500] transition-all duration-300
-        w-[70%] border-t-2 border-b-2 border-white
-        bg-background2 text-white shadow-md
-        flex items-center justify-center
+      className={`fixed top-0 left left-1/2   -translate-x-1/2 z-[500] transition-all duration-300
+         border-t-2 border-b-2 border-white
+        w-[100%] bg-background2 text-white shadow-md
+        flex items-center justify-center md:w-[70%]
         ${
           isAtTop
             ? "h-20 mt-5 bg-black"

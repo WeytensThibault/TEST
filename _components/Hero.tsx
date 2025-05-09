@@ -2,15 +2,10 @@
 import TorusModel from "../_components/threejs/TorusModel";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image"; // Assuming you're using Next.js for image optimization
+import Image from "next/image";
 import Link from "next/link";
 
-const TITLES = [
-  "3D Animator",
-  "Full Stack Developer",
-  "Video Editor",
-  "Aspiring Cloud Engineer",
-];
+const TITLES = ["3D Animator", "Full Stack Developer", "Video Editor"];
 
 export default function Hero() {
   const age = new Date().getFullYear() - 2003;
@@ -90,7 +85,6 @@ export default function Hero() {
             height={400}
           />
         </div>
-
         <div className="absolute top-[-100] inset-0 z-0 flex justify-center items-center pointer-events-none">
           <TorusModel />
         </div>
