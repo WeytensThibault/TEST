@@ -44,21 +44,19 @@ const FaceModel: React.FC = () => {
         // Play animation once and stop at frame 40
         if (gltf.animations && gltf.animations.length > 0) {
           const mixer = new THREE.AnimationMixer(model);
+          mixerRef.current = mixer;
+
           gltf.animations.forEach((clip) => {
             const action = mixer.clipAction(clip);
-            action.setLoop(THREE.LoopOnce, 1); // Play only once and stop
-            action.clampWhenFinished = true; // Prevent looping after finishing
-
+            action.setLoop(THREE.LoopOnce, 1);
+            action.clampWhenFinished = true;
             action.play();
-
-            // Set animation to stop at frame 40
-            action.onFinished = () => {
-              const finalFrame = 40;
-              action.time =
-                (finalFrame / action.getClip().duration) * clip.duration;
-            };
           });
-          mixerRef.current = mixer;
+
+          mixer.addEventListener("finished", () => {
+            console.log("Animation finished");
+            // Optional: do something when animation ends
+          });
         } else {
           console.warn("No animations found in GLTF file.");
         }
