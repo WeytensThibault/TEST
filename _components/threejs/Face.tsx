@@ -11,19 +11,17 @@ const FaceModel: React.FC = () => {
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // Clear container
     while (containerRef.current.firstChild) {
       containerRef.current.removeChild(containerRef.current.firstChild);
     }
 
-    // Setup scene, camera, renderer
     const scene = new THREE.Scene();
     const width = containerRef.current.clientWidth;
     const height = containerRef.current.clientHeight;
 
     const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 100);
     camera.position.z = 2;
-    camera.position.set(0.03, -0.05, 5); // Closer camera
+    camera.position.set(0.03, -0.05, 5);
 
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setPixelRatio(window.devicePixelRatio);
@@ -38,10 +36,9 @@ const FaceModel: React.FC = () => {
       (gltf) => {
         const model = gltf.scene;
         model.rotation.y = Math.PI / 2;
-        model.scale.set(0.6, 0.6, 0.6); // Adjust scale as needed
+        model.scale.set(0.6, 0.6, 0.6);
         scene.add(model);
 
-        // Play animation once and stop at frame 40
         if (gltf.animations && gltf.animations.length > 0) {
           const mixer = new THREE.AnimationMixer(model);
           mixerRef.current = mixer;
@@ -51,11 +48,6 @@ const FaceModel: React.FC = () => {
             action.setLoop(THREE.LoopOnce, 1);
             action.clampWhenFinished = true;
             action.play();
-          });
-
-          mixer.addEventListener("finished", () => {
-            console.log("Animation finished");
-            // Optional: do something when animation ends
           });
         } else {
           console.warn("No animations found in GLTF file.");
@@ -67,7 +59,6 @@ const FaceModel: React.FC = () => {
       }
     );
 
-    // Animation loop
     const animate = () => {
       requestAnimationFrame(animate);
       const delta = clock.getDelta();
@@ -78,7 +69,6 @@ const FaceModel: React.FC = () => {
     };
     animate();
 
-    // Cleanup
     return () => {
       if (containerRef.current && renderer.domElement) {
         containerRef.current.removeChild(renderer.domElement);

@@ -11,10 +11,10 @@ export default function Loader() {
 
     const timer = setTimeout(() => {
       setFadeOut(true);
-      // Re-enable scroll after fade out starts
+
       setTimeout(() => {
         document.body.style.overflow = "";
-      }, 1000); // match transition-opacity duration
+      }, 1000);
     }, 2000);
 
     return () => {

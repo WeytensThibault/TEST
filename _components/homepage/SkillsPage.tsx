@@ -18,25 +18,25 @@ export default function Skillspage() {
   };
 
   return (
-    <div className="mb-20 mt-20 border-black md:mt-15">
+    <div className=" mt-20 border-black md:mt-15">
       <div className="w-full  flex flex-col items-center justify-center lg:hidden mt-0">
         <p className="text-white text-2xl font-bold pb-4 text-center">
           My field in:
         </p>
-        <ul className="text-white flex  justify-between  mx-auto mb-2 md:w-1/2">
+        <ul className="text-white flex justify-between mx-auto mb-2 md:w-1/2">
           {skills.map((skill) => (
             <li
               key={skill}
               onClick={() =>
                 setActiveItem(skill as "Coding" | "Cloud" | "Video")
               }
-              className={`cursor-pointer px-2 font-bold text-xl transition duration-300 md:px-0 
+              className={`cursor-pointer px-2 font-bold text-xl transition-transform duration-300 md:px-0 
               ${
                 active === skill
-                  ? "text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]"
+                  ? "text-white scale-105 drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]"
                   : "text-white"
               }
-              hover:text-white  hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]`}
+              hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]`}
             >
               {skill}
             </li>

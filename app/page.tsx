@@ -14,10 +14,9 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading duration or hook into actual asset/model loading logic
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2500); // match with Loader fade duration
+    }, 2500);
 
     return () => clearTimeout(timer);
   }, []);

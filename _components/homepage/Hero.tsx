@@ -70,7 +70,7 @@ export default function Hero() {
           </div>
           <Link
             href="/aboutme"
-            className="px-6 mt-4 bg-black py-2 border-2 border-white rounded-full transition duration-300 hover:bg-white hover:text-black font-semibold"
+            className="px-6 mt-4 bg-dark bg-black text-white  py-2 border-2 border-white rounded-full transition duration-300 hover:bg-white hover:text-black font-semibold"
           >
             About Me
           </Link>

@@ -62,10 +62,8 @@ const toolIcons: Record<string, JSX.Element> = {
   MySQL: <SiMysql />,
   Vue: <SiVuedotjs />,
 
-  // Cloud
   Docker: <SiDocker />,
 
-  // Design & Video
   Figma: <SiFigma />,
   "Adobe XD": <SiAdobexd />,
   Illustrator: <SiAdobeillustrator />,

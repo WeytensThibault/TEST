@@ -3,77 +3,24 @@
 import TorusModel from "../../_components/threejs/TorusModel";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { projects } from "../../data/ProjectDataJson";
+import { workExperience } from "../../data/WorkExperience";
+workExperience;
 export default function ProjectsPagea() {
-  const workExperience = [
-    {
-      logo: "./img/mateco.png",
-      title: "Mateco IT",
-      subtitle: "(intern)",
-      description: "Frontend Developer – Working with Angular",
-      date: "2024 - 4 months",
-    },
-    {
-      logo: "./img/ikologik.jpeg",
-      title: "Ikologik",
-      subtitle: "(part-time)",
-      description:
-        "Backend Developer – Turning A Spring service application to pure Java",
-      date: "2025 - 2 months",
-    },
-  ];
-
-  const projects = [
-    {
-      image: "/img/pokewalker.png",
-      title: "Pokewalker",
-      technologies: ["Flutter", "Firebase"],
-      description: "A mobile app to motivate Pokémon fans to walk.",
-      longDescription:
-        " a mobile application designed to encourage physical activity among Pokémon enthusiasts by gamifying the walking experience. Built with Flutter for cross-platform compatibility and Firebase for backend services, this app transforms daily steps into an exciting Pokémon adventure.",
-    },
-    {
-      image: "/img/makeyourmove.png",
-      title: "Make Your Move",
-      technologies: ["Vue", "Tensorflow"],
-      description:
-        "An application that uses AI to detect how many exercises you perform.",
-      longDescription:
-        "an innovative application that leverages artificial intelligence to track and count your physical exercises in real-time. Built using Vue.js for the frontend and TensorFlow for the AI capabilities, this application transforms the way users monitor their workout progress.",
-    },
-    {
-      image: "/img/b&b.png",
-      title: "Bubbles & Breeze",
-      technologies: ["Craft CMS", "HTML/CSS/JS"],
-      description:
-        "A school project where we had to create a webshop for the company Bubbles & Breeze.",
-      longDescription:
-        "Bubbles & Breeze is a comprehensive e-commerce website developed as an academic project, showcasing the implementation of modern web development techniques and content management systems. This project demonstrates the full lifecycle of creating a functional webshop for a fictional bath and body care company.",
-    },
-    {
-      image: "/img/b&b.png",
-      title: "3D modelling topology",
-      technologies: ["Craft CMS", "HTML/CSS/JS"],
-      description:
-        "A school project where we had to create a webshop for the company Bubbles & Breeze.",
-      longDescription:
-        "Bubbles & Breeze is a comprehensive e-commerce website developed as an academic project, showcasing the implementation of modern web development techniques and content management systems. This project demonstrates the full lifecycle of creating a functional webshop for a fictional bath and body care company.",
-    },
-  ];
-
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
   const projectsSectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            console.log("hello worlds");
-          }
-        });
+        entries.forEach((entry) => {});
       },
-      { threshold: 0.5 } // Adjust threshold as needed
+      { threshold: 0.5 }
     );
 
     if (projectsSectionRef.current) {
@@ -98,19 +45,25 @@ export default function ProjectsPagea() {
   return (
     <>
       <div className=" ">
-        <h1 className="text-4xl text-white font-bold text-center">Worked at</h1>
+        <div className="flex items-center justify-center my-6">
+          <div className="flex-grow border-t border-gray-400 mx-4 glow-line"></div>
+          <h1 className="text-4xl text-white font-bold text-center">
+            Worked at
+          </h1>
+          <div className="flex-grow border-t border-gray-400 mx-4 glow-line"></div>
+        </div>
 
         <div className="flex flex-col md:flex-row justify-center gap-6 mt-4 mx-4 ">
           {workExperience.map((job, index) => (
             <div
               key={index}
-              className="relative border border-white p-6 shadow-lg w-full max-w-md text-white"
+              className="relative border flex border-white p-6 shadow-lg w-full max-w-md text-white"
             >
               <Image
                 src={job.logo}
                 width={50}
                 height={50}
-                className="h-12  w-12  mr-2 object-cover"
+                className="h-12  w-12 mb-2 mr-2 object-cover"
                 alt={`${job.title} Logo`}
               />
               <div className="flex-grow">
@@ -130,53 +83,90 @@ export default function ProjectsPagea() {
         </div>
       </div>
 
-      <div ref={projectsSectionRef} className="relative text-white mt-10 mb-30">
-        <h2 className="text-3xl font-bold text-center mb-6">Projects</h2>
+      <div
+        ref={projectsSectionRef}
+        className="relative text-white mt-10 mt-20 mb-15"
+      >
+        <div className="flex items-center justify-center my-6">
+          <div className="flex-grow border-t border-gray-400 mx-4 glow-line"></div>
+          <h2 className="text-3xl font-bold text-center mb-6">Projects</h2>
+          <div className="flex-grow border-t border-gray-400 mx-4 glow-line"></div>
+        </div>
         <div className="absolute inset-0 -z-[100] -top-0 pointer-events-none">
           <TorusModel modelPath="/models/torus2.glb" />
         </div>
 
-        <div className="flex flex-wrap m-4 justify-center gap-8 relative z-10">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="w-full relative p-4 md:w-[270px] border-1 border-white bg-black flex flex-col justify-between"
-            >
-              <Image
-                width={50}
-                height={50}
-                src={project.image}
-                alt={`${project.title} Preview`}
-                className="w-full h-48 object-cover mb-4"
-              />
-              <div className="flex-grow text-black">
-                <h3 className="text-xl text-white font-semibold mb-2">
-                  {project.title}
-                </h3>
-                <div className="flex gap-2 mb-3 flex-wrap">
-                  {project.technologies.map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="bg-gray-200 text-sm px-3 py-1 rounded"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+        <div className="relative z-10  overflow-visible">
+          <Swiper
+            modules={[Navigation, Pagination]}
+            spaceBetween={0}
+            pagination={false}
+            breakpoints={{
+              768: { slidesPerView: 1.5 },
+              1024: { slidesPerView: 4 },
+            }}
+            navigation={{
+              prevEl: "#prev",
+              nextEl: "#next",
+            }}
+            className="pb-10 "
+          >
+            {projects.map((project, index) => (
+              <SwiperSlide key={index}>
+                <div className="border mx-4 border-white bg-black p-4 flex flex-col h-[450px]">
+                  <Image
+                    width={50}
+                    height={50}
+                    src={project.image}
+                    alt={`${project.title} Preview`}
+                    className="w-full h-48 object-cover mb-4"
+                  />
+                  <div className="flex-grow">
+                    <h3 className="text-xl font-semibold mb-2">
+                      {project.title}
+                    </h3>
+                    <div className="flex gap-2 mb-3 flex-wrap">
+                      {project.technologies.map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          className="bg-gray-200  text-black text-sm px-3 py-1 rounded"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    <p className="text-sm h-15 mb-4">{project.description}</p>
+                  </div>
+                  <button
+                    onClick={() => handleLearnMore(index)}
+                    className="bg-black border-2 border-white cursor-pointer flex align-center justify-center mt-auto text-white px-4 py-2 rounded hover:bg-white hover:text-black transition duration-300"
+                  >
+                    Learn More
+                  </button>
                 </div>
-                <p className="text-white text-sm mb-4">{project.description}</p>
-              </div>
-              <button
-                onClick={() => handleLearnMore(index)}
-                className="bg-black border-2 border-white cursor-pointer flex align-center justify-center mt-auto text-white px-4 py-2 rounded hover:bg-white hover:text-black transition duration-300"
-              >
-                Learn More
-              </button>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          <div className="flex justify-between items-center mb-4">
+            <div
+              id="prev"
+              className="cursor-pointer  text-white text-5xl p-6 m-4  hover:text-gray-400 transition-transform transform hover:scale-110"
+              aria-label="Previous Slide"
+            >
+              &larr;
             </div>
-          ))}
+            <div
+              id="next"
+              className="cursor-pointer  text-white text-5xl p-6 m-4  hover:text-gray-400 transition-transform transform hover:scale-110"
+              aria-label="Next Slide"
+            >
+              &rarr;
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Selected Project Panel */}
       <div className="fixed top-0 left-0 h-screen w-full z-[999] pointer-events-none">
         <div
           className={`absolute border-white border-2 top-0 left-0 h-full transition-all duration-500 ease-in-out
@@ -220,6 +210,12 @@ export default function ProjectsPagea() {
           )}
         </div>
       </div>
+
+      <style jsx>{`
+        .glow-line {
+          box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+      `}</style>
     </>
   );
 }
