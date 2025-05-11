@@ -1,7 +1,7 @@
 "use client";
 
 import TorusModel from "../../_components/threejs/TorusModel";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
 export default function ProjectsPagea() {
@@ -62,6 +62,30 @@ export default function ProjectsPagea() {
   ];
 
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
+  const projectsSectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            console.log("hello worlds");
+          }
+        });
+      },
+      { threshold: 0.5 } // Adjust threshold as needed
+    );
+
+    if (projectsSectionRef.current) {
+      observer.observe(projectsSectionRef.current);
+    }
+
+    return () => {
+      if (projectsSectionRef.current) {
+        observer.unobserve(projectsSectionRef.current);
+      }
+    };
+  }, []);
 
   const handleLearnMore = (index: number) => {
     setSelectedProject(index);
@@ -106,17 +130,17 @@ export default function ProjectsPagea() {
         </div>
       </div>
 
-      <div className="relative text-white mt-10 mb-30">
+      <div ref={projectsSectionRef} className="relative text-white mt-10 mb-30">
         <h2 className="text-3xl font-bold text-center mb-6">Projects</h2>
         <div className="absolute inset-0 -z-[100] -top-0 pointer-events-none">
           <TorusModel modelPath="/models/torus2.glb" />
         </div>
 
-        <div className="flex flex-wrap m-4  justify-center gap-8 relative z-10">
+        <div className="flex flex-wrap m-4 justify-center gap-8 relative z-10">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="w-full relative p-4 md:w-[270px] border-1 border-white  bg-black flex flex-col justify-between"
+              className="w-full relative p-4 md:w-[270px] border-1 border-white bg-black flex flex-col justify-between"
             >
               <Image
                 width={50}
@@ -150,49 +174,50 @@ export default function ProjectsPagea() {
             </div>
           ))}
         </div>
+      </div>
 
-        <div className="fixed  top-0 left-0 h-screen w-full z-[999] pointer-events-none">
-          <div
-            className={`absolute  border-white border-2 top-0 left-0 h-full transition-all duration-500 ease-in-out
-            ${selectedProject !== null ? "translate-x-0" : "-translate-x-full"}
-            w-full md:w-1/2 bg-black/90 backdrop-blur-lg p-8 pointer-events-auto`}
-          >
-            {selectedProject !== null && (
-              <div className="flex flex-col justify-center  h-full text-white  relative">
-                <button
-                  onClick={handleClosePanel}
-                  className="absolute top-6 cursor-pointer right-6 bg-white text-black px-3 py-1 rounded hover:bg-gray-300 transition"
-                >
-                  X
-                </button>
-                <Image
-                  width={50}
-                  height={50}
-                  src={projects[selectedProject].image}
-                  alt={`${projects[selectedProject].title} Preview`}
-                  className="w-full h-48 object-cover mb-4 rounded-xl"
-                />
-                <h3 className="text-3xl font-bold mb-4">
-                  {projects[selectedProject].title}
-                </h3>
-                <p className="text-gray-300 mb-6">
-                  {projects[selectedProject].longDescription}
-                </p>
-                <div className="flex flex-wrap gap-2 ">
-                  {projects[selectedProject].technologies.map(
-                    (tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="bg-white text-black text-sm px-3 py-1 rounded"
-                      >
-                        {tech}
-                      </span>
-                    )
-                  )}
-                </div>
+      {/* Selected Project Panel */}
+      <div className="fixed top-0 left-0 h-screen w-full z-[999] pointer-events-none">
+        <div
+          className={`absolute border-white border-2 top-0 left-0 h-full transition-all duration-500 ease-in-out
+          ${selectedProject !== null ? "translate-x-0" : "-translate-x-full"}
+          w-full md:w-1/2 bg-black/90 backdrop-blur-lg p-8 pointer-events-auto`}
+        >
+          {selectedProject !== null && (
+            <div className="flex flex-col justify-center h-full text-white relative">
+              <button
+                onClick={handleClosePanel}
+                className="absolute top-6 cursor-pointer right-6 bg-white text-black px-3 py-1 rounded hover:bg-gray-300 transition"
+              >
+                X
+              </button>
+              <Image
+                width={50}
+                height={50}
+                src={projects[selectedProject].image}
+                alt={`${projects[selectedProject].title} Preview`}
+                className="w-full h-48 object-cover mb-4 rounded-xl"
+              />
+              <h3 className="text-3xl font-bold mb-4">
+                {projects[selectedProject].title}
+              </h3>
+              <p className="text-gray-300 mb-6">
+                {projects[selectedProject].longDescription}
+              </p>
+              <div className="flex flex-wrap gap-2 ">
+                {projects[selectedProject].technologies.map(
+                  (tech, techIndex) => (
+                    <span
+                      key={techIndex}
+                      className="bg-white text-black text-sm px-3 py-1 rounded"
+                    >
+                      {tech}
+                    </span>
+                  )
+                )}
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </>

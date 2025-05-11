@@ -1,5 +1,5 @@
 "use client";
-import TorusModel from "../_components/threejs/TorusModel";
+import TorusModel from "../../_components/threejs/TorusModel";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";

@@ -18,7 +18,6 @@ import {
   SiSony,
   SiAmazon,
   SiDocker,
-  SiKubernetes,
 } from "react-icons/si";
 
 interface InfoPanelProps {
@@ -44,7 +43,7 @@ const contentMap = {
   Cloud: {
     description:
       "My cloud engineering began with a strong foundation in programming. While I'm still building my experience in this area, I’m passionate about learning cloud technologies and continuously expanding my skill set. I'm actively seeking opportunities, such as internships, to grow and gain hands-on experience in cloud environments.",
-    tools: ["Microsoft Azure", "AWS", "Docker", "Kubernetes"],
+    tools: ["Microsoft Azure", "AWS", "Docker"],
   },
   Video: {
     description:
@@ -65,7 +64,6 @@ const toolIcons: Record<string, JSX.Element> = {
 
   // Cloud
   Docker: <SiDocker />,
-  Kubernetes: <SiKubernetes />,
 
   // Design & Video
   Figma: <SiFigma />,

@@ -2,11 +2,13 @@
 
 import { useEffect, useState } from "react";
 import Loader from "../_components/Loader";
-import SkillsPage from "../_components/SkillsPage";
-import Hero from "../_components/Hero";
+
 import Navbar from "../_components/Navbar";
-import ProjectsPage from "../_components/ProjectsPage";
+
 import Footer from "../_components/Footer";
+import Hero from "../_components/homepage/Hero";
+import ProjectsPage from "../_components/homepage/ProjectsPage";
+import SkillsPage from "../_components/homepage/SkillsPage";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);

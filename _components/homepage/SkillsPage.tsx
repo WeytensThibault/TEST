@@ -1,8 +1,8 @@
 "use client";
 
-import InfoPanel from "../_components/InfoPanel";
-import Pedestals from "../_components/threejs/Pedestals";
 import { useState } from "react";
+import InfoPanel from "./InfoPanel";
+import Pedestals from "../threejs/Pedestals";
 
 export default function Skillspage() {
   const [active, setActiveItem] = useState<"Coding" | "Cloud" | "Video">(
@@ -47,7 +47,7 @@ export default function Skillspage() {
       <div className="flex  relative flex-col lg:flex-row mt-10 w-full">
         <div className="w-full lg:w-3/5 flex flex-col items-center ">
           <p className="text-white text-2xl font-bold pb-4 text-center hidden lg:block">
-            Working in:
+            Work experience in:
           </p>
           <ul className="text-white flex justify-between w-1/2 mx-auto hidden lg:flex">
             {skills.map((skill) => (
@@ -71,8 +71,6 @@ export default function Skillspage() {
           <div className="w-full mt-10 h-full  lg:block lg:opacity-100">
             <Pedestals rotationY={rotationMap[active]} />
           </div>
-          {/* <div className="w-full  overflow-hidden h-300 absolute z-1 opacity-25  ">
-          </div> */}
         </div>
         <div className="w-full lg:w-3/5">
           <InfoPanel active={active} />
