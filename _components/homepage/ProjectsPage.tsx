@@ -70,7 +70,6 @@ export default function ProjectsPagea() {
         </div>
       </div>
 
-      {/* Projects Section */}
       <div ref={projectsSectionRef} className="relative text-white mt-20">
         <div className="flex mb-10 items-center justify-center my-6">
           <div className="flex-grow border-t border-gray-400 mx-4 glow-line"></div>
