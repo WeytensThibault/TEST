@@ -103,7 +103,7 @@ const AboutMe: React.FC = () => {
           </div>
 
           <div className="w-full my-auto md:w-1/2  md:mt-0 md:pl-10 flex flex-col align-center justify-center">
-            <h1 className="relative text-4xl md:text-6xl mb-4 font-code font-bold">
+            <h1 className="relative text-4xl md:text-6xl mb-4 font-code mt-4 font-bold">
               ~Whoami{" "}
               <span
                 className="text-4xl absolute top-0"
