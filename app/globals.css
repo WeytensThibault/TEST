@@ -1,4 +1,4 @@
-@import url("https://use.typekit.net/twk3tbz.css");
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech&display=swap");
 @import "tailwindcss";
 
 @tailwind base;
@@ -10,7 +10,7 @@
   --white: #ffffff;
   --background: #171717;
   --gray: #404040;
-  --font-condor: "condor", sans-serif;
+  --font-condor: "Share Tech", sans-serif;
   --font-code: "Cascadia Mono", "Consolas", monospace;
   --font-mono: "Geist Sans", sans-serif;
   --color-black: var(--background);
