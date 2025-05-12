@@ -49,7 +49,7 @@ export default function Hero() {
             Thibault Weytens
           </h1>
 
-          <h2 className="text-white flex-wrap text-3xl md:text-4xl mt-4 font-title tracking-wide flex gap-1 min-h-[2.5rem]">
+          <h2 className="text-white flex-wrap text-3xl md:text-4xl mt-4 font-title tracking-wide flex gap-1 h-[4rem]">
             {displayedLetters.map((char, i) => (
               <motion.span
                 key={i}

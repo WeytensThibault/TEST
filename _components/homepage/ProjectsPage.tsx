@@ -49,13 +49,13 @@ export default function ProjectsPagea() {
       <div className=" ">
         <div className="flex items-center justify-center my-6">
           <div className="flex-grow border-t border-gray-400 mx-4 glow-line"></div>
-          <h1 className="text-4xl text-white font-bold text-center">
+          <h1 className="text-4xl  text-white font-bold text-center">
             Worked at
           </h1>
           <div className="flex-grow border-t border-gray-400 mx-4 glow-line"></div>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-center gap-6 mt-4 mx-4 ">
+        <div className="flex mt-10 flex-col md:flex-row justify-center gap-6 mt-4 mx-4 ">
           {workExperience.map((job, index) => (
             <div
               key={index}
@@ -89,9 +89,9 @@ export default function ProjectsPagea() {
         ref={projectsSectionRef}
         className="relative text-white mt-10 mt-20 mb-15"
       >
-        <div className="flex items-center justify-center my-6">
+        <div className="flex mb-10 items-center justify-center my-6">
           <div className="flex-grow border-t border-gray-400 mx-4 glow-line"></div>
-          <h2 className="text-3xl font-bold text-center mb-6">Projects</h2>
+          <h2 className="text-3xl font-bold text-center">Projects</h2>
           <div className="flex-grow border-t border-gray-400 mx-4 glow-line"></div>
         </div>
         <div className="absolute inset-0 -z-[100] -top-0 pointer-events-none">
@@ -104,7 +104,7 @@ export default function ProjectsPagea() {
             spaceBetween={0}
             pagination={false}
             breakpoints={{
-              768: { slidesPerView: 1.5 },
+              768: { slidesPerView: 2.5 },
               1024: { slidesPerView: 4 },
             }}
             navigation={{

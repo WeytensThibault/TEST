@@ -18,10 +18,10 @@ export default function Skillspage() {
   };
 
   return (
-    <div className=" mt-20 border-black md:mt-15">
+    <div className=" mt-30 border-black md:mt-15">
       <div className="w-full  flex flex-col items-center justify-center lg:hidden mt-0">
         <p className="text-white text-2xl font-bold pb-4 text-center">
-          My field in:
+          Work experience in:
         </p>
         <ul className="text-white flex justify-between mx-auto mb-2 md:w-1/2">
           {skills.map((skill) => (
@@ -30,7 +30,7 @@ export default function Skillspage() {
               onClick={() =>
                 setActiveItem(skill as "Coding" | "Cloud" | "Video")
               }
-              className={`cursor-pointer px-2 font-bold text-xl transition-transform duration-300 md:px-0 
+              className={`cursor-pointer border-2 border-white py-1 px-2 font-bold mx-2 text-xl transition duration-300 transform 
               ${
                 active === skill
                   ? "text-white scale-105 drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]"

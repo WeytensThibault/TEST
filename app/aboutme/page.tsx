@@ -90,42 +90,44 @@ const AboutMe: React.FC = () => {
   return (
     <div className="text-white">
       <Navbar />
-      <div className="flex mt-25 flex-col md:flex-row items-center md:items-start justify-center md:justify-between px-4 md:px-16 py-10">
-        <div className="w-full md:w-1/2 flex justify-center">
-          <Image
-            src="/img/me.png"
-            alt="About Me"
-            width={400}
-            height={400}
-            className="shadow-lg border-2 border-white p-4 max-w-full h-auto"
-          />
-        </div>
+      <div className="flex justify-center items-center">
+        <div className="flex relative mt-25 flex-col md:flex-row items-center md:items-start justify-center md:justify-between px-4 md:px-16 py-10">
+          <div className="w-full md:w-1/2 flex justify-center">
+            <Image
+              src="/img/me.png"
+              alt="About Me"
+              width={400}
+              height={400}
+              className="shadow-lg border-2 border-white p-4 max-w-full h-auto"
+            />
+          </div>
 
-        <div className="w-full md:w-1/2 mt-8 md:mt-0 md:pl-10 flex flex-col justify-center">
-          <h1 className="relative  text-4xl md:text-6xl mb-4 font-code font-bold">
-            ~Whoami{" "}
-            <span
-              className="text-4xl absolute top-0"
-              style={{ opacity: showCursor ? 1 : 0 }}
-            >
-              █
-            </span>
-          </h1>
+          <div className="w-full my-auto md:w-1/2  md:mt-0 md:pl-10 flex flex-col align-center justify-center">
+            <h1 className="relative text-4xl md:text-6xl mb-4 font-code font-bold">
+              ~Whoami{" "}
+              <span
+                className="text-4xl absolute top-0"
+                style={{ opacity: showCursor ? 1 : 0 }}
+              >
+                █
+              </span>
+            </h1>
 
-          <p className="mb-4">
-            Hello! My name is{" "}
-            <span className="font-bold">Thibault Weytens</span>.
-          </p>
-          <p className="mb-4">
-            I&#39;m a {age}-year-old male originally from Belgium, raised on a
-            farm where I learned the value of hard work early on. After
-            graduating as a carpenter, I followed my passion for technology and
-            pursued further studies in computer-related fields.
-          </p>
+            <p className="mb-4">
+              Hello! My name is{" "}
+              <span className="font-bold">Thibault Weytens</span>.
+            </p>
+            <p className="mb-4">
+              I&#39;m a {age}-year-old male originally from Belgium, raised on a
+              farm where I learned the value of hard work early on. After
+              graduating as a carpenter, I followed my passion for technology
+              and pursued further studies in computer-related fields.
+            </p>
+          </div>
         </div>
       </div>
 
-      <div className="flex mt-25 flex-col md:flex-row items-center md:items-start justify-center md:justify-between px-4 md:px-16 py-10">
+      <div className="flex md:mt-25 mt-0 flex-col md:flex-row items-center md:items-start justify-center md:justify-between px-4 md:px-16 py-10">
         <div className="w-full md:w-1/2 mt-8 md:mt-0 md:pl-10 flex flex-col justify-center">
           <h1 className="text-4xl md:text-6xl font-bold underline mb-5">
             My studies
