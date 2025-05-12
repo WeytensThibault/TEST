@@ -1,6 +1,4 @@
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Head from "next/head"; // ✅ Use this, not from "next/document"
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,7 +11,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Thibault Weytens",
   description: "Portfolio",
 };
@@ -25,10 +23,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Head>
-        {/* ✅ Load Adobe Fonts correctly */}
+      <head>
+        {/* ✅ Move Adobe Fonts here (not using <Head>) */}
         <link rel="stylesheet" href="https://use.typekit.net/twk3tbz.css" />
-      </Head>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
